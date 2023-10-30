@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{%  load static %}
+
+
+
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+    <![endif]-->
+
+
+{% block content %}
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>LOGIN</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">LOGIN</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {% if messeges %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+               {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username" placeholder="Username"><br>
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" placeholder="Enter your password">
+            <button type="submit">OK</button>
+        </form>
+    </div>
+{% endblock %}
